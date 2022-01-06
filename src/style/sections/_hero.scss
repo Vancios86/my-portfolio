@@ -14,22 +14,28 @@
   bottom: 0;
   right: 0;
   z-index: -1;
-  background-image: url("../hero_img.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: right;
-    
+
+  .heroImage {
+    position: absolute;
+    top: 8%;
+    right: 8%;
+    img {
+      max-height: 333px;
+      z-index: -1;
+      border-radius: 50%;
+    }
+  }
 
   @include respond(phone) {
     padding: 0rem $default-font-size;
   }
-                
+
   .hero-title {
     font-size: 5.6rem;
     font-weight: 700;
     margin-bottom: 3.2rem;
-    text-align: left;  
-      
+    text-align: left;
+
     @include respond(tab-land) {
       font-size: 4rem;
     }
@@ -44,19 +50,72 @@
     @include respond(phone-xs) {
       font-size: 2.8rem;
     }
-  }
-    
+
+    span.name {
+      animation: reveal 5s;
+    }
+
+    span.love {
+      animation: reveal 8s;
+    }
     span.create {
-        color: #EB4837;
-        cursor: pointer;
+      animation: flicker 9s linear infinite;
+      cursor: pointer;
     }
-    span.create:hover {
-      transition: all 2s ease-in 0s;     
-      color: #331456;
-      text-decoration: underline;
+
+    @keyframes reveal {
+      0% {
+        opacity: 0;
+      }
+      70% {
+        opacity: 0;
+      }
+      75% {
+        opacity: 0.11;
+      }
+      80% {
+        opacity: 0.22;
+      }
+      85% {
+        opacity: 0.44;
+      }
+      90% {
+        opacity: 0.66;
+      }
+      90% {
+        opacity: 0.88;
+      }
+      100% {
+        opacity: 1;
+      }
     }
-   
-  
+    @keyframes flicker {
+      0%,
+      19.999%,
+      22%,
+      62.999%,
+      64%,
+      64.999%,
+      70%,
+      100% {
+        opacity: 0.99;
+        text-shadow: -1px -1px 0 $primary-color, 1px -1px 0 $primary-color,
+          -1px 1px 0 $primary-color, 1px 1px 0 $primary-color, 0 -2px 8px,
+          0 0 2px, 0 0 5px #ff7e00, 0 0 15px #e06af8, 0 0 2px #ff7e00,
+          0 2px 3px #000;
+      }
+      20%,
+      21.999%,
+      63%,
+      63.999%,
+      65%,
+      69.999% {
+        opacity: 0.4;
+        text-shadow: none;
+      }
+    }
+  }
+
   .hero-cta {
     display: flex;
 
